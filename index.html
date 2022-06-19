@@ -7,33 +7,32 @@
     <title>Chat Buddy</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div id="messages">
-      <form>
-        <input type="text" placeholder="type your message" />
-      </form>
-    </div>
+    <div id="messages"></div>
+    <form>
+      <input type="text" placeholder="type your message" />
+    </form>
 
     <script>
       function showMessage(text, isMine = false) {
         document.getElementById("messages").innerHTML += `
-         <div class="message-row ${isMine ? "mine" : "friend"}">
-            <div class="buble">
-            ${text}
-                </div>
+            <div class="message-row ${isMine ? "mine" : "friends"}">
+                <div class="bubble">${text}</div>
             </div>
-        `;
+          `;
       }
 
       const ws = new WebSocket("ws://localhost:8080");
+
       ws.addEventListener("message", (ev) => {
         ev.data.text().then(showMessage);
       });
+
       document.querySelector("form").onsubmit = (ev) => {
         ev.preventDefault();
         const input = document.querySelector("input");
         ws.send(input.value);
-        input.value = "";
         showMessage(input.value, true);
         input.value = "";
       };
