@@ -1,8 +1,57 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+form {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+}
+
+input {
+    border: solid #F5F6FA;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background-color: #F5F6FA;
+    width: 100%;
 }
 
 #messages {
-padding: 1rem;
+padding: 0.5rem;
+}
+
+.bubble {
+    background-color: #F5F6FA;
+    border-radius: 1.2rem;
+    margin: 0.1rem;
+    padding: 0.5rem 1rem;
+    display: inline-block;    
+}
+
+.message-row.mine {
+    text-align: right;
+}
+
+.message-row.friends {
+    text-align: left;
+}
+
+.message-row.mine .bubble {
+    background-color: #0040FF;
+    color: white;
+}
+
+.message-row.friends .bubble {
+    background-color: #F5F6FA;
+    color: black;
 }
